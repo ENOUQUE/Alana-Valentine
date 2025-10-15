@@ -60,8 +60,8 @@
     // Evento padrão de visualização de página
     fbq('track', 'PageView');
 
-    // Função para disparar a compra apenas uma vez
-    function registrarCompraUmaVez() {
+    // Função para disparar a compra apenas uma vez em produção
+    function registrarCompraUmaVez(valorCompra) {
       const chaveCompra = 'compra_registrada';
       if (!localStorage.getItem(chaveCompra)) {
         fbq('track', 'Purchase', {
@@ -69,15 +69,19 @@
           content_type: 'product',
           custom_data: {
             currency: 'BRL',
-            value: 10.00
+            value: valorCompra // valor dinâmico enviado
           }
         });
         localStorage.setItem(chaveCompra, 'true');
-        console.log('Compra registrada!');
+        console.log('Compra registrada com valor: R$' + valorCompra);
       } else {
         console.log('Compra já registrada anteriormente.');
       }
     }
+
+    // Chamar a função passando o valor real da compra
+    // Exemplo: se a compra for 19 reais, use:
+    // registrarCompraUmaVez(19.00);
   </script>
 
   <noscript>
@@ -92,9 +96,14 @@
     }, 5000);
   </script>
 </head>
-<body onload="registrarCompraUmaVez()">
+<body>
   <img src="https://s3gt.previas.shop/instagram/inst/imagem.jpg" alt="Foto de Solange Valentine">
   <h1>Sol Valentine</h1>
   <p>Liberando agora os meus conteúdos para você, amor... 💋</p>
+
+  <!-- Dispara a compra com valor real (substitua 19.00 pelo valor da venda) -->
+  <script>
+    registrarCompraUmaVez(10.00); // aqui você coloca o valor real
+  </script>
 </body>
 </html>
