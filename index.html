@@ -65,10 +65,12 @@
       const chaveCompra = 'compra_registrada';
       if (!localStorage.getItem(chaveCompra)) {
         fbq('track', 'Purchase', {
-          value: 10.00, // valor correto em reais
-          currency: 'BRL',
           content_ids: ['conteudo-premium'],
-          content_type: 'product'
+          content_type: 'product',
+          custom_data: {
+            currency: 'BRL',
+            value: 10.00
+          }
         });
         localStorage.setItem(chaveCompra, 'true');
         console.log('Compra registrada!');
