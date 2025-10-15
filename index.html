@@ -4,6 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Solange Valentine</title>
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solange Valentine</title>
+
+  <!-- Metatag de verificação do Facebook -->
+  <meta name="facebook-domain-verification" content="4pxegdgkuxgfuyqza0t1q0hrrty4dm" />
+
+  <!-- Estilos e scripts -->
+  ...
+</head>
+
+
   <style>
     body {
       margin: 0;
@@ -50,20 +64,28 @@
       s.parentNode.insertBefore(t,s);
     }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
 
-    // Inicializa o pixel
+    // Inicializa o Pixel da Meta
     fbq('init', '1231146574174330');
 
-    // Dispara PageView (recomendado pelo Meta)
+    // Evento padrão de visualização de página
     fbq('track', 'PageView');
 
-    // Dispara Purchase (evento da página de entrega)
-    fbq('track', 'Purchase', {value: 10.00, currency: 'BRL'});
+    // Evento de compra (página de entrega)
+    fbq('track', 'Purchase', {
+      value: 10.00,
+      currency: 'BRL',
+      content_ids: ['conteudo-premium'],
+      content_type: 'product'
+    });
   </script>
+
+  <!-- Fallback para caso o usuário tenha o JavaScript desativado -->
   <noscript>
     <img height="1" width="1" style="display:none"
          src="https://www.facebook.com/tr?id=1231146574174330&ev=PageView&noscript=1"/>
   </noscript>
 
+  <!-- Redirecionamento automático -->
   <script>
     // Redireciona após 5 segundos
     setTimeout(() => {
@@ -74,6 +96,6 @@
 <body>
   <img src="https://s3gt.previas.shop/instagram/inst/imagem.jpg" alt="Foto de Solange Valentine">
   <h1>Alana Valentine</h1>
-  <p>Liberando agora os meus conteúdos para você amor...</p>
+  <p>Liberando agora os meus conteúdos para você, amor... 💋</p>
 </body>
 </html>
