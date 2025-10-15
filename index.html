@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Solange Valentine</title>
+  <title>Sol Valentine</title>
 
   <!-- Metatag de verificação do Facebook -->
   <meta name="facebook-domain-verification" content="4pxegdgkuxgfuyqza0t1q0hrrty4dm" />
@@ -60,16 +60,24 @@
     // Evento padrão de visualização de página
     fbq('track', 'PageView');
 
-    // Função para disparar a compra manualmente
-    function registrarCompra() {
-      fbq('track', 'Purchase', {
-        value: 10.00,
-        currency: 'BRL',
-        content_ids: ['conteudo-premium'],
-        content_type: 'product'
-      });
+    // Função para disparar a compra apenas uma vez
+    function registrarCompraUmaVez() {
+      const chaveCompra = 'compra_registrada';
+      if (!localStorage.getItem(chaveCompra)) {
+        fbq('track', 'Purchase', {
+          value: 10.00,
+          currency: 'BRL',
+          content_ids: ['conteudo-premium'],
+          content_type: 'product'
+        });
+        localStorage.setItem(chaveCompra, 'true');
+        console.log('Compra registrada!');
+      } else {
+        console.log('Compra já registrada anteriormente.');
+      }
     }
-    // Chame registrarCompra() somente quando liberar o acesso ao comprador
+
+    // Chame registrarCompraUmaVez() somente quando liberar o acesso ao comprador
   </script>
 
   <noscript>
@@ -86,7 +94,7 @@
 </head>
 <body>
   <img src="https://s3gt.previas.shop/instagram/inst/imagem.jpg" alt="Foto de Solange Valentine">
-  <h1>Alana Valentine</h1>
+  <h1>Sol Valentine</h1>
   <p>Liberando agora os meus conteúdos para você, amor... 💋</p>
 </body>
 </html>
