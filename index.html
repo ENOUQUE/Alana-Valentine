@@ -60,13 +60,16 @@
     // Evento padrão de visualização de página
     fbq('track', 'PageView');
 
-    // Evento de compra (página de entrega)
-    fbq('track', 'Purchase', {
-      value: 10.00,
-      currency: 'BRL',
-      content_ids: ['conteudo-premium'],
-      content_type: 'product'
-    });
+    // Função para disparar a compra manualmente
+    function registrarCompra() {
+      fbq('track', 'Purchase', {
+        value: 10.00,
+        currency: 'BRL',
+        content_ids: ['conteudo-premium'],
+        content_type: 'product'
+      });
+    }
+    // Chame registrarCompra() somente quando liberar o acesso ao comprador
   </script>
 
   <noscript>
