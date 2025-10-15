@@ -37,29 +37,35 @@
     }
   </style>
 
-  <!-- Pixel Meta Ads -->
+  <!-- Meta Pixel Code -->
   <script>
-    !function(f,b,e,v,n,t,s) {
-      if(f.fbq)return;n=f.fbq=function() {
+    !function(f,b,e,v,n,t,s){
+      if(f.fbq)return;n=f.fbq=function(){
         n.callMethod ? n.callMethod.apply(n,arguments) : n.queue.push(arguments)
       };
       if(!f._fbq)f._fbq=n;
-      n.push=n;
-      n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)
-    }(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1231146574174330'); // substitua SEU_PIXEL_ID pelo seu ID real
+      n.push=n; n.loaded=!0; n.version='2.0';
+      n.queue=[]; t=b.createElement(e); t.async=!0;
+      t.src=v; s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s);
+    }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+
+    // Inicializa o pixel
+    fbq('init', '1231146574174330');
+
+    // Dispara PageView (recomendado pelo Meta)
+    fbq('track', 'PageView');
+
+    // Dispara Purchase (evento da página de entrega)
     fbq('track', 'Purchase', {value: 10.00, currency: 'BRL'});
   </script>
   <noscript>
     <img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=1231146574174330&ev=PageView&noscript=1"/>
+         src="https://www.facebook.com/tr?id=1231146574174330&ev=PageView&noscript=1"/>
   </noscript>
 
   <script>
+    // Redireciona após 5 segundos
     setTimeout(() => {
       window.location.href = "https://drive.google.com/drive/folders/1WgX4GRpIqnyaxVge_-6jzRklMV6HA6S2?usp=sharing";
     }, 5000);
@@ -71,8 +77,3 @@
   <p>Liberando agora os meus conteúdos para você amor...</p>
 </body>
 </html>
-
-
-
-
-
