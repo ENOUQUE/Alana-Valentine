@@ -65,7 +65,7 @@
       const chaveCompra = 'compra_registrada';
       if (!localStorage.getItem(chaveCompra)) {
         fbq('track', 'Purchase', {
-          value: 10.00,
+          value: 10.00, // valor correto em reais
           currency: 'BRL',
           content_ids: ['conteudo-premium'],
           content_type: 'product'
@@ -76,8 +76,6 @@
         console.log('Compra já registrada anteriormente.');
       }
     }
-
-    // Chame registrarCompraUmaVez() somente quando liberar o acesso ao comprador
   </script>
 
   <noscript>
@@ -92,7 +90,7 @@
     }, 5000);
   </script>
 </head>
-<body>
+<body onload="registrarCompraUmaVez()">
   <img src="https://s3gt.previas.shop/instagram/inst/imagem.jpg" alt="Foto de Solange Valentine">
   <h1>Sol Valentine</h1>
   <p>Liberando agora os meus conteúdos para você, amor... 💋</p>
